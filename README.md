@@ -56,16 +56,11 @@ List<Card>
 
 - [X]  블랙잭 판단
     - 처음 카드 2장의 합이 21인지 판단.
-- [ ]  버스트 판단
+- [X]  버스트 판단
     - 보유 카드 합 21이 넘어가면 버스트
-- [ ]  countPoints()
-    - [ ]  A 카드 미포함
+- [X] countGreedyPoints
+    - A 포함되면 total value + 10 <= 21이면 + 10해서 반환
 
-      sum all
-
-      A 카드 포함
-
-      a가 버스트 되지 않으면 11로 세기.
 
 
 ## Deck

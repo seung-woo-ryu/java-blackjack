@@ -17,22 +17,25 @@ public class Hand {
     }
 
     public boolean isBlackjack() {
-        return myHand != null && myHand.size() == 2 && isConsistOfAceAndTenValue();
+        return myHand != null && myHand.size() == 2 && (isConsistOfAce()&& isConsistOfTenValue());
     }
 
 
-    private boolean isConsistOfAceAndTenValue() {
-        boolean isAce = false;
-        boolean isTenValue = false;
+    private boolean isConsistOfTenValue() {
         for (Card card : myHand) {
-            if (card.isAce()) {
-                isAce = true;
-            }
-            if (card.getValue() == 10) {
-                isTenValue = true;
+            if (card.isTenValue()) {
+                return true;
             }
         }
-        return isAce && isTenValue;
+        return false;
+    }
+    private boolean isConsistOfAce() {
+        for (Card card : myHand) {
+            if (card.isAce()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isBurst() {
@@ -40,10 +43,19 @@ public class Hand {
     }
 
     public int countGreedyPoints() {
-        // 카드에 Ace가 있는지 확인.
-        // 총 value 다 더함.
-        // total value + 10 <= BURST_LIMIT ? total value + 10 ; total value
+        int sum = getSumOfHand();
+        // todo: 보기 어렵다..
+        if (isConsistOfAce() && sum + 10 <= BURST_LIMIT) {
+            return sum + 10;
+        }
 
-        return 32;
+        return sum;
+    }
+
+    private int getSumOfHand() {
+        return myHand.stream()
+            .map(card -> card.getValue())
+            .reduce(0, (x, y) -> x + y)
+            .intValue();
     }
 }

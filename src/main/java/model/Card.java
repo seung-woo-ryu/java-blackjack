@@ -14,6 +14,10 @@ public class Card {
         return this.rank.isAce();
     }
 
+    public boolean isTenValue() {
+        return this.rank.getValue() == 10;
+    }
+
     public int getValue() {
         return rank.getValue();
     }
