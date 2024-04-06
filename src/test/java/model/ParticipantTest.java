@@ -13,7 +13,8 @@ class ParticipantTest {
         Deck deck = new Deck();
         deck.init();
         Hand hand = new Hand();
-        Player player = new Player(hand, deck);
+        String name = "player";
+        Player player = new Player(hand, deck, name);
         int beforeSum = player.getSumOfHand();
         // when
         player.hit();
@@ -28,12 +29,12 @@ class ParticipantTest {
         Deck deck = new Deck();
         deck.init();
         Hand hand = new Hand();
-        Player player = new Player(hand, deck);
+        String name = "player";
+        Player player = new Player(hand, deck, name);
         // when
         int beforeSum = player.getSumOfHand();
         int targetSum = 0;
         // then
         Assertions.assertThat(beforeSum).isEqualTo(targetSum);
     }
-
 }
