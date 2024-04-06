@@ -77,8 +77,8 @@ List<Card> totalCard;
 
 ## abstract class Participant
 
-- [ ]  hit(): 카드 받기.
-- [ ]  countPoints(): 보유하고 있는 카드의 점수 계산하기.
+- [X]  hit(): 카드 받기.
+- [X]  countPoints(): 보유하고 있는 카드의 점수 계산하기.
 - [ ]  abstract getFirstHand(): 첫 두장 보유하고 있는 카드 문자열로 반환.
   ⇒ 딜러는 1장만
   ⇒ 플레이어는 2장 다
