@@ -80,4 +80,20 @@ class HandTest {
         // then
         Assertions.assertFalse(isBurst);
     }
+
+    @Test
+    void 중복된_카드_추가시_EXCEPTION_발생() {
+        // given
+        Hand hand = new Hand();
+
+        hand.addCard(new Card(Suit.CLUB,Rank.NINE));
+
+        // when, then
+        Assertions.assertThrows(IllegalArgumentException.class,
+            ()->{
+                hand.addCard(new Card(Suit.CLUB,Rank.NINE));
+            }
+        );
+
+    }
 }

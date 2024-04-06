@@ -13,6 +13,10 @@ public class Hand {
     }
 
     public void addCard(Card card) {
+        if (myHand.contains(card)) {
+            throw new IllegalArgumentException("중복된 카드가 존재합니다");
+        }
+
         myHand.add(card);
     }
 
