@@ -71,8 +71,9 @@ List<Card> totalCard;
 
 - [X]  Init()
     - [X]  랜덤 순서 52장의 Enum Card List 생성
-- [ ]  hit()
-    - [ ]  맨 위의 카드 뽑아주기.
+- [X]  hit()
+    - [X] 맨 위의 카드 뽑아주기.
+    - [X] 뽑을 카드가 없으면 Exception 발생.
 
 ## abstract class Participant
 

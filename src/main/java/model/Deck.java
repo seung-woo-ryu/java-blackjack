@@ -9,6 +9,7 @@ public class Deck {
     private List<Card> cardList;
 
     public void init() {
+        // todo: 인스턴스 생성 -> init말고 init된 인스턴스를 반환하는 메서드 필. 전자는 생성 후 init 안하면 문제 발생.
         generateCardList();
         shuffle();
     }
@@ -28,6 +29,11 @@ public class Deck {
     }
 
     public Card hit() {
-        return cardList.re
+        if (!cardList.isEmpty()) {
+            return cardList.remove(0);
+        }
+
+        throw new IllegalArgumentException("덱에 카드가 존재하지 않습니다");
     }
+
 }
