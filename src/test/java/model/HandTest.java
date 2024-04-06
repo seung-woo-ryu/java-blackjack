@@ -1,5 +1,7 @@
 package model;
 
+import model.enums.Rank;
+import model.enums.Suit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

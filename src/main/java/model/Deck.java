@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import model.enums.Rank;
+import model.enums.Suit;
 
 public class Deck {
 

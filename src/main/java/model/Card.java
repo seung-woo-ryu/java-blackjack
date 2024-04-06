@@ -1,5 +1,8 @@
 package model;
 
+import model.enums.Rank;
+import model.enums.Suit;
+
 public class Card {
 
     private Suit suit;
