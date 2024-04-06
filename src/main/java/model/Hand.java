@@ -53,9 +53,12 @@ public class Hand {
     }
 
     private int getSumOfHand() {
-        return myHand.stream()
-            .map(card -> card.getValue())
-            .reduce(0, (x, y) -> x + y)
-            .intValue();
+        int sum = 0;
+
+        for (Card card : myHand) {
+            sum += card.getValue();
+        }
+
+        return sum;
     }
 }

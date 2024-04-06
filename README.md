@@ -69,8 +69,8 @@ List<Card>
 
 List<Card> totalCard;
 
-- [ ]  Init()
-    - [ ]  랜덤 순서 52장의 Enum Card List 생성
+- [X]  Init()
+    - [X]  랜덤 순서 52장의 Enum Card List 생성
 - [ ]  hit()
     - [ ]  맨 위의 카드 뽑아주기.
 
