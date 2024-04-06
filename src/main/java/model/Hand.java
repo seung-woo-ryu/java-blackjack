@@ -65,4 +65,12 @@ public class Hand {
 
         return sum;
     }
+
+    public List<Card> getFirstTwo() {
+        if (myHand.size() != 2) {
+            throw new IllegalArgumentException("아직 처음 패를 받지 못했습니다");
+        }
+
+        return myHand.subList(0, 2);
+    }
 }

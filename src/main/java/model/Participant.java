@@ -2,7 +2,7 @@ package model;
 
 public abstract class Participant {
 
-    private Hand hand;
+    protected Hand hand;
     private Deck deck;
     private String name;
 
@@ -20,4 +20,6 @@ public abstract class Participant {
     public int getSumOfHand() {
         return hand.countGreedyPoints();
     }
+
+    public abstract String getFirstHand();
 }

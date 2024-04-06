@@ -42,4 +42,9 @@ public class Card {
     public int getValue() {
         return rank.getValue();
     }
+
+    @Override
+    public String toString() {
+        return rank.getValue() + suit.toString();
+    }
 }
