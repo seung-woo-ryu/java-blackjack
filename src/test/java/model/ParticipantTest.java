@@ -1,10 +1,11 @@
 package model;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
-import model.enums.Rank;
-import model.enums.Suit;
+import model.card.Card;
+import model.card.enums.Rank;
+import model.card.enums.Suit;
+import model.participant.Croupier;
+import model.participant.Participant;
+import model.participant.Player;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

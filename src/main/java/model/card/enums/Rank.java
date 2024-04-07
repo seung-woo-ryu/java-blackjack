@@ -1,4 +1,4 @@
-package model.enums;
+package model.card.enums;
 
 public enum Rank {
     ACE(1),

@@ -1,6 +1,7 @@
-package model;
+package model.participant;
 
-import java.util.List;
+import model.Deck;
+import model.Hand;
 
 public class Croupier extends Participant{
 

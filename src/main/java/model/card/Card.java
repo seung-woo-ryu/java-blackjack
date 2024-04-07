@@ -1,8 +1,8 @@
-package model;
+package model.card;
 
 import java.util.Objects;
-import model.enums.Rank;
-import model.enums.Suit;
+import model.card.enums.Rank;
+import model.card.enums.Suit;
 
 public class Card {
 

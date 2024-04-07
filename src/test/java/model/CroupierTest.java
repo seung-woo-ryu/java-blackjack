@@ -1,9 +1,9 @@
 package model;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import model.enums.Rank;
-import model.enums.Suit;
+import model.card.Card;
+import model.card.enums.Rank;
+import model.card.enums.Suit;
+import model.participant.Croupier;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

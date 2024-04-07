@@ -1,7 +1,9 @@
-package model;
+package model.participant;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import model.Deck;
+import model.Hand;
 
 public class Player extends Participant{
 

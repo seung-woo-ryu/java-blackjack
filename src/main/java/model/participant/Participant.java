@@ -1,4 +1,8 @@
-package model;
+package model.participant;
+
+import model.card.Card;
+import model.Deck;
+import model.Hand;
 
 public abstract class Participant {
 

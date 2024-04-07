@@ -1,9 +1,8 @@
 package model;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.lang.reflect.Field;
 import java.util.List;
+import model.card.Card;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package model.enums;
+package model.card.enums;
 
 public enum Suit {
     HEART("HEART"),
