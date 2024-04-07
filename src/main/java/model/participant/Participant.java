@@ -6,6 +6,10 @@ import model.Hand;
 
 public abstract class Participant {
 
+    public String getName() {
+        return name;
+    }
+
     protected Hand hand;
     private Deck deck;
     private String name;
@@ -26,4 +30,10 @@ public abstract class Participant {
     }
 
     public abstract String getFirstHand();
+    public boolean isBlackjack() {
+        return hand.isBlackjack();
+    }
+    public boolean isBurst() {
+        return hand.isBurst();
+    }
 }
