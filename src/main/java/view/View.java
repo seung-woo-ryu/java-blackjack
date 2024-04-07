@@ -26,7 +26,7 @@ public class View {
             System.out.println(inputPlayers);
 
             String players = scanner.next();
-            if (validateName(players)) {
+            if (Validator.validateName(players)) {
                 return players;
             }
 
@@ -38,7 +38,7 @@ public class View {
         while (true) {
             System.out.println(String.format(inputBettingAmount, player));
             String bet = scanner.next();
-            if (validateParseInt(bet)) {
+            if (Validator.validateBetAmount(bet)) {
                 return Integer.parseInt(bet);
             }
 
@@ -57,9 +57,9 @@ public class View {
         while (true) {
             System.out.println(inputOneMoreCard);
 
-            String yesOrnNO = scanner.next();
-            if (validateYesOrNo(yesOrnNO)) {
-                return yesOrnNO;
+            String yesOrNO = scanner.next();
+            if (Validator.validateYesOrNo(yesOrNO)) {
+                return yesOrNO;
             }
 
             System.out.println("y, n만 입력하세요.");
@@ -77,7 +77,7 @@ public class View {
     public void printParticipantBurst(String name) {
         System.out.println(String.format(printParticipantBurst, name));
     }
-    // todo: DTO로 바꾸끼.
+    // todo: DTO로 바꾸기.
     public void printSumOfHand(String[] nameList, String[] handList, int[] sumList) {
         for (int i = 0; i < nameList.length; i++) {
             System.out.println(String.format(printSumOfHand, nameList[i], handList[i], sumList[i]));
@@ -88,16 +88,5 @@ public class View {
         for (int i = 0; i < nameList.length; i++) {
             System.out.println(String.format(printReward,nameList[i],rewardList[i]));
         }
-    }
-    private boolean validateYesOrNo(String yesOrnNO) {
-        return true;
-    }
-
-    private boolean validateParseInt(String bet) {
-        return true;
-    }
-
-    private boolean validateName(String players) {
-        return true;
     }
 }
