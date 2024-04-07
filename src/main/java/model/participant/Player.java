@@ -7,6 +7,12 @@ import model.Hand;
 
 public class Player extends Participant{
 
+    private int betAmount;
+
+    public void setBetAmount(int betAmount) {
+        this.betAmount = betAmount;
+    }
+
     public Player(Hand hand, Deck deck, String name) {
         super(hand, deck, name);
     }
@@ -18,6 +24,6 @@ public class Player extends Participant{
             .map(card -> card.toString())
             .collect(Collectors.toList());
 
-        return String.join(", ", collect);
+        return getName() + ": " + String.join(", ", collect);
     }
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import model.Deck;
 import model.Participants;
 import model.participant.Croupier;
 import model.participant.Player;
@@ -10,11 +11,16 @@ public class Controller {
 
     private View view;
     private Participants participants;
+    private Deck deck;
+    public Controller(View view, Deck deck) {
+        this.view = view;
+        this.deck = deck;
+    }
 
     public void run() {
         initPlayers();
 
-        participants.betAmount();
+        betAmount();
 
         printFirstTowDeal();
 
@@ -23,6 +29,14 @@ public class Controller {
 
         countResult();
         printResult();
+    }
+
+    private void betAmount() {
+        List<Player> players = participants.getPlayers();
+        for (Player player : players) {
+            int betAmount = view.inputBettingAmount(player.getName());
+            player.setBetAmount(betAmount);
+        }
     }
 
     private void printResult() {
@@ -66,12 +80,12 @@ public class Controller {
 
     private void printFirstTowDeal() {
         String participantNameList = participants.getParticipants();
-        String[] handList = participants.getFirstHands();
+        List<String> handList = participants.getFirstHands();
         view.printFirstTowDeal(participantNameList, handList);
     }
 
     private void initPlayers() {
         String players = view.inputPlayers();
-        participants = new Participants(players);
+        participants = new Participants(players,deck);
     }
 }

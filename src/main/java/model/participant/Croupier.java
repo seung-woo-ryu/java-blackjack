@@ -15,7 +15,7 @@ public class Croupier extends Participant{
 
     @Override
     public String getFirstHand() {
-        return hand.getFirstTwo()
+        return getName() + ": " + hand.getFirstTwo()
             .get(0)
             .toString();
     }

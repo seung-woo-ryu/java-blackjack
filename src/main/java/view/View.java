@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class View {
@@ -46,7 +47,7 @@ public class View {
         }
     }
 
-    public void printFirstTowDeal(String participants, String[] handList) {
+    public void printFirstTowDeal(String participants, List<String> handList) {
         System.out.println(String.format(printFirstTowDeal,participants));
         for (String hand : handList) {
             System.out.println(hand);
