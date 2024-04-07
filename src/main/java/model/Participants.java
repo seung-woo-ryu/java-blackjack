@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.participant.Croupier;
 import model.participant.Participant;
@@ -24,7 +25,14 @@ public class Participants {
         return null;
     }
 
-    public Player[] getPlayers() {
+    public List<Player> getPlayers() {
+        List<Player> players = new ArrayList<>();
+
+        for (Participant participant : participants) {
+            if (participant instanceof Player) {
+                players.add((participant);
+            }
+        }
         return null;
     }
 
