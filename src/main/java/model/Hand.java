@@ -2,11 +2,14 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import model.card.Card;
 
 public class Hand {
 
     private int BURST_LIMIT = 21;
+    private int TEN_VALUE = 10;
+    private int FIRST_HAND_COUNT = 2;
     private List<Card> myHand;
 
     public Hand() {
@@ -22,7 +25,7 @@ public class Hand {
     }
 
     public boolean isBlackjack() {
-        return myHand != null && myHand.size() == 2 && (isConsistOfAce()&& isConsistOfTenValue());
+        return myHand.size() == FIRST_HAND_COUNT && isConsistOfAce()&& isConsistOfTenValue();
     }
 
 
@@ -49,22 +52,19 @@ public class Hand {
 
     public int countGreedyPoints() {
         int sum = getSumOfHand();
-        // todo: 보기 어렵다..
-        if (isConsistOfAce() && sum + 10 <= BURST_LIMIT) {
-            return sum + 10;
+        int sumIfAce11 = sum + TEN_VALUE;
+
+        if (isConsistOfAce() && sumIfAce11 <= BURST_LIMIT) {
+            return sumIfAce11;
         }
 
         return sum;
     }
 
     private int getSumOfHand() {
-        int sum = 0;
-
-        for (Card card : myHand) {
-            sum += card.getValue();
-        }
-
-        return sum;
+        return myHand.stream()
+            .mapToInt(card -> card.getValue())
+            .sum();
     }
 
     public List<Card> getFirstTwo() {
@@ -73,5 +73,12 @@ public class Hand {
         }
 
         return myHand.subList(0, 2);
+    }
+
+    public String toStringHandInfo() {
+        return myHand.stream()
+            .map(card -> card.toString())
+            .collect(Collectors.joining(","))
+            .toString();
     }
 }

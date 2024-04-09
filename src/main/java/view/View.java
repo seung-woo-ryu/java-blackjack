@@ -1,7 +1,13 @@
 package view;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import model.dto.FinalHandInfoDto;
+import model.dto.FInalHandInfoListDto;
+import model.dto.ParticipantResultDto;
+import model.dto.ParticipantResultListDto;
+import model.participant.Player;
 
 public class View {
 
@@ -54,9 +60,9 @@ public class View {
         }
     }
 
-    public String inputOneMoreCard() {
+    public String inputOneMoreCard(String player) {
         while (true) {
-            System.out.println(inputOneMoreCard);
+            System.out.println(String.format(inputOneMoreCard, player));
 
             String yesOrNO = scanner.next();
             if (Validator.validateYesOrNo(yesOrNO)) {
@@ -67,7 +73,10 @@ public class View {
         }
     }
 
-    public void printParticipantCard(String name, String hand) {
+    public void printParticipantCard(Player player) {
+        String name = player.getName();
+        String hand = player.getHand();
+
         System.out.println(String.format(printParticipantHand,name,hand));
     }
 
@@ -78,16 +87,18 @@ public class View {
     public void printParticipantBurst(String name) {
         System.out.println(String.format(printParticipantBurst, name));
     }
-    // todo: DTO로 바꾸기.
-    public void printSumOfHand(String[] nameList, String[] handList, int[] sumList) {
-        for (int i = 0; i < nameList.length; i++) {
-            System.out.println(String.format(printSumOfHand, nameList[i], handList[i], sumList[i]));
+    public void printSumOfHand(FInalHandInfoListDto FInalHandInfoListDto) {
+        List<FinalHandInfoDto> finalHandInfoDtoList = FInalHandInfoListDto.getFinalHandInfoDtoList();
+
+        for (FinalHandInfoDto finalHandInfoDto : finalHandInfoDtoList) {
+            System.out.println(String.format(printSumOfHand,finalHandInfoDto.getName(),finalHandInfoDto.getHand(),finalHandInfoDto.getSum()));
         }
     }
-    public void printEndResult(String[] nameList, int[] rewardList) {
+    public void printFianlReward(ParticipantResultListDto participantResultListDto) {
         System.out.println(printEndResult);
-        for (int i = 0; i < nameList.length; i++) {
-            System.out.println(String.format(printReward,nameList[i],rewardList[i]));
+
+        for (ParticipantResultDto participantResultDto : participantResultListDto.getParticipantResultDtoList()) {
+            System.out.println(String.format(printReward,participantResultDto.getName(),participantResultDto.getIncome()));
         }
     }
 }

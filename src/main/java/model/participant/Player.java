@@ -6,17 +6,16 @@ import model.Deck;
 import model.Hand;
 
 public class Player extends Participant{
-
     private int betAmount;
-
-    public void setBetAmount(int betAmount) {
-        this.betAmount = betAmount;
-    }
-
     public Player(Hand hand, Deck deck, String name) {
         super(hand, deck, name);
     }
-
+    public void setBetAmount(int betAmount) {
+        this.betAmount = betAmount;
+    }
+    public int getBetAmount() {
+        return betAmount;
+    }
     @Override
     public String getFirstHand() {
         List<String> collect = hand.getFirstTwo()

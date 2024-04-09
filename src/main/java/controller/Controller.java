@@ -1,6 +1,7 @@
 package controller;
 
-import java.util.List;
+import static model.CompareUtil.compare;
+
 import model.Deck;
 import model.Participants;
 import model.participant.Croupier;
@@ -22,33 +23,28 @@ public class Controller {
 
         betAmount();
 
-        printFirstTowDeal();
+        startFirstTwoDeal();
 
         progressPlayer();
         progressCroupier();
 
-        countResult();
-        printResult();
+        compare(participants);
+
+        view.printSumOfHand(participants.getFinalHandInfoListDto());
+        view.printFianlReward(participants.getParticipantsResultDto());
     }
 
     private void betAmount() {
-        List<Player> players = participants.getPlayers();
-        for (Player player : players) {
+        for (Player player : participants.getPlayers()) {
             int betAmount = view.inputBettingAmount(player.getName());
             player.setBetAmount(betAmount);
         }
     }
-
-    private void printResult() {
-    }
-
-    private void countResult() {
-    }
-
     private void progressCroupier() {
         Croupier croupier = participants.getCroupier();
 
         if (croupier.isLowerThan16()) {
+            view.printCroupierGetOneMoreCard();
             croupier.hit();
         }
     }
@@ -60,28 +56,31 @@ public class Controller {
             }
 
             getOneMoreCard(player);
+
+            if (player.isBurst()) {
+                view.printParticipantBurst(player.getName());
+            }
         }
     }
 
     private void getOneMoreCard(Player player) {
         boolean isContinue;
         do {
-            isContinue = view.inputOneMoreCard().equals("y");
+            String yesOrNo = view.inputOneMoreCard(player.getName());
+            isContinue = yesOrNo.equals("y");
+
             if (isContinue) {
                 player.hit();
+                view.printParticipantCard(player);
             }
         }
         while (isContinue && !player.isBurst());
-
-        if (player.isBurst()) {
-            view.printParticipantBurst(player.getName());
-        }
     }
 
-    private void printFirstTowDeal() {
-        String participantNameList = participants.getParticipants();
-        List<String> handList = participants.getFirstHands();
-        view.printFirstTowDeal(participantNameList, handList);
+    private void startFirstTwoDeal() {
+        participants.dealTwice();
+
+        view.printFirstTowDeal(participants.toStringParticipantsNameWithDelimiter(), participants.getFirstHands());
     }
 
     private void initPlayers() {

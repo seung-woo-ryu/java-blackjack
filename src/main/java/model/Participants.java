@@ -1,9 +1,12 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+import model.dto.FinalHandInfoDto;
+import model.dto.FInalHandInfoListDto;
+import model.dto.ParticipantResultDto;
+import model.dto.ParticipantResultListDto;
 import model.participant.Croupier;
 import model.participant.Participant;
 import model.participant.Player;
@@ -29,7 +32,7 @@ public class Participants {
         }
     }
 
-    public String getParticipants() {
+    public String toStringParticipantsNameWithDelimiter() {
         List<String> collect = participants.stream()
             .map(p -> p.getName())
             .collect(Collectors.toList());
@@ -62,5 +65,31 @@ public class Participants {
         }
 
         throw new IllegalArgumentException("딜러가 항상 존재해야합니다.");
+    }
+
+    public void dealTwice() {
+        for (Participant p : participants) {
+            p.hit();
+            p.hit();
+        }
+    }
+
+    public FInalHandInfoListDto getFinalHandInfoListDto() {
+        List<FinalHandInfoDto> collect = participants
+            .stream()
+            .map(participant -> new FinalHandInfoDto(
+                participant.getName(),
+                participant.getHand(),
+                participant.getSumOfHand()))
+            .collect(Collectors.toList());
+
+        return new FInalHandInfoListDto(collect);
+    }
+
+    public ParticipantResultListDto getParticipantsResultDto() {
+        List<ParticipantResultDto> collect = participants.stream()
+            .map(participant -> ParticipantResultDto.of(participant.getName(), participant.getIncome()))
+            .collect(Collectors.toList());
+        return new ParticipantResultListDto(collect);
     }
 }
